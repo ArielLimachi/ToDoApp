@@ -1,14 +1,7 @@
-<%@ page import="jalasoft.com.servlets.ListServlet"%>
-<%@ page import="jalasoft.com.models.TaskPage"%>
 <%@ page import="jalasoft.com.models.Task"%>
 <%@ page import="jalasoft.com.models.ToDoListPersister"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-<%
-ListServlet listServlet = new ListServlet();
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
