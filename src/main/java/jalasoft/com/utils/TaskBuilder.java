@@ -13,11 +13,9 @@ public class TaskBuilder {
 		String description = request.getParameter("description");
 		String statusAsString = request.getParameter("status");
 		Status status = Status.PENDING;
-		switch (statusAsString) {
-		case "DONE":
+		if(statusAsString.equals(""+Status.COMPLETE)) {
 			status = Status.COMPLETE;
-			break;
-		}
+		}		
 		String initialDateAsString = request.getParameter("initialDate");
 		String dueDateAsString = request.getParameter("dueDate");
 

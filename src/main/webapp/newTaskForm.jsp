@@ -79,7 +79,7 @@ input[type=button], input[type=submit], input[type=reset] {
 				<td>Status</td>
 				<td><select name="status">
 						<option value="PENDING">Pending</option>
-						<option value="DONE" selected>Complete</option>
+						<option value="COMPLETE" selected>Complete</option>
 				</select></td>
 			</tr>
 			<tr>

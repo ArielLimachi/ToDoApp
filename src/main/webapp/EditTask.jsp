@@ -78,8 +78,8 @@ input[type=button], input[type=submit], input[type=reset] {
 			<tr>
 				<td>Status</td>
 				<td><select name="status">
-						<option value="<%=ToDoListPersister.getEditingTask().getStatus()%>">Pending</option>
-						<option value="DONE" selected>Complete</option>
+						<option value="PENDING">Pending</option>
+						<option value="COMPLETE" selected>Complete</option>
 				</select></td>
 			</tr>
 			<tr>
