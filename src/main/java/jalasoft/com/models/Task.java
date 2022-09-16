@@ -13,7 +13,7 @@ public class Task {
 	private CustomDate initialDate;
 	private CustomDate dueDate;
 
-	public Task() {
+	public Task() {		
 		id = UUID.randomUUID();
 		title = "To Do";
 		description = "No description";
@@ -24,6 +24,7 @@ public class Task {
 	}
 
 	public Task(String title, String description, Status status, CustomDate initialDate, CustomDate dueDate) {
+		this();
 		id = UUID.randomUUID();
 		this.title = title;
 		this.description = description;
