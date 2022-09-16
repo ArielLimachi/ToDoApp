@@ -3,9 +3,9 @@ package jalasoft.com.models;
 import java.util.Objects;
 
 public class CustomDate {
-	int year;
-	int month;
-	int date;
+	private int year;
+	private int month;
+	private int date;
 
 	public CustomDate(int year, int month, int day) {
 		super();

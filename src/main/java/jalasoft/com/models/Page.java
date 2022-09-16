@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Page<T> {
 
-	int quantityLimit;
-	List<T> items;
+	private int quantityLimit;
+	private List<T> items;
 
 	public Page(int limit) {
 		this.quantityLimit = limit;

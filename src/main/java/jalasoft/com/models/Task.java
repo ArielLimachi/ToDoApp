@@ -6,12 +6,12 @@ import java.util.UUID;
 
 public class Task {
 
-	UUID id;
-	String title;
-	String description;
-	Status status;
-	CustomDate initialDate;
-	CustomDate dueDate;
+	private UUID id;
+	private String title;
+	private String description;
+	private Status status;
+	private CustomDate initialDate;
+	private CustomDate dueDate;
 
 	public Task() {
 		id = UUID.randomUUID();
