@@ -26,10 +26,4 @@ public class DeleteServlet extends HttpServlet {
 		response.sendRedirect("ToDoList.jsp");
 
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
-
 }
