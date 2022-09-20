@@ -26,3 +26,5 @@ hs_err_pid*
 .classpath
 .project
 .settings/
+
+src/main/java/jalasoft/com/models/MyMain.java

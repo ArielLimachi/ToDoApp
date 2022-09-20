@@ -3,24 +3,34 @@ package jalasoft.com.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToDoDictionary extends Dictionary<String> {
+import jalasoft.com.utils.DictionaryUtils;
+
+public class ToDoDictionary extends Dictionary<Word> {
 
 	ToDoListPersister taskPersistence;
+	DictionaryUtils dictionaryUtils;
 	List<Task> tasks;
 
 	public ToDoDictionary() {
 		taskPersistence = new ToDoListPersister();
 		tasks = taskPersistence.getTasks();
+		dictionaryUtils = new DictionaryUtils();
+
+		setItems();
 	}
 
 	@Override
-	public String search(String object) {
+	public Word search(Word word) {
 		return null;
 	}
 
 	@Override
 	public void setItems() {
-		items = new ArrayList<String>();
+		items = new ArrayList<Word>();
+		for (Task task : tasks) {
+
+			addItems(dictionaryUtils.getWordsFromTask(task));
+		}
 	}
 
 }
