@@ -1,5 +1,8 @@
 package jalasoft.com.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class CustomDate {
@@ -12,6 +15,7 @@ public class CustomDate {
 		this.year = year;
 		this.month = month;
 		this.date = day;
+		isValid(this);
 	}
 
 	public int getYear() {
@@ -57,7 +61,19 @@ public class CustomDate {
 
 	@Override
 	public String toString() {
-		return " (" + year + "-" + month + "-" + date + ")";
+		return year + "-" + month + "-" + date;
 	}
 
+	public boolean isValid(CustomDate date) {
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		boolean isValid = false;
+		try {
+			Date auxiliarDate = simpleDateFormat.parse(date.toString());
+			isValid = true;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return isValid;
+	}
 }
