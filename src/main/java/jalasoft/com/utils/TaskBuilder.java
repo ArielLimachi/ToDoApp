@@ -8,7 +8,7 @@ import jalasoft.com.models.Task;
 
 public class TaskBuilder {
 
-	public static Task build(HttpServletRequest request) {
+	public Task build(HttpServletRequest request) {
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
 		String statusAsString = request.getParameter("status");
@@ -22,7 +22,7 @@ public class TaskBuilder {
 		return new Task(title, description, status, buildDate(initialDateAsString), buildDate(dueDateAsString));
 	}
 	
-	public static CustomDate buildDate(String dateAsString) {
+	public CustomDate buildDate(String dateAsString) {
 		String[] aux = dateAsString.split("-");
 		int year = Integer.parseInt(aux[0]);
 		int month = Integer.parseInt(aux[1]);

@@ -64,16 +64,18 @@ input[type=button], input[type=submit], input[type=reset] {
 	<h1>ToDo App</h1>
 	<h2>Edit task</h2>
 	<hr>
-		
+	<%
+		ToDoListPersister toDoListPersister = new ToDoListPersister();		
+	%>		
 	<form action="edit" method="post">
 		<table style="with: 100%">
 			<tr>
 				<td>Title</td>
-				<td><input type="text" name="title" value="<%=ToDoListPersister.getEditingTask().getTitle()%>"/></td>
+				<td><input type="text" name="title" value="<%=toDoListPersister.getEditingTask().getTitle()%>"/></td>
 			</tr>
 			<tr>
 				<td>Description</td>
-				<td><input type="text" name="description" value="<%=ToDoListPersister.getEditingTask().getDescription()%>"/></td>
+				<td><input type="text" name="description" value="<%=toDoListPersister.getEditingTask().getDescription()%>"/></td>
 			</tr>
 			<tr>
 				<td>Status</td>
@@ -84,11 +86,11 @@ input[type=button], input[type=submit], input[type=reset] {
 			</tr>
 			<tr>
 				<td>Initial Date</td>
-				<td><input type="date" name="initialDate" value="<%=ToDoListPersister.getEditingTask().getInitialDate().toString()%>"/></td>
+				<td><input type="date" name="initialDate" value="<%=toDoListPersister.getEditingTask().getInitialDate().toString()%>"/></td>
 			</tr>
 			<tr>
 				<td>Due Date</td>
-				<td><input type="date" name="dueDate" value="<%=ToDoListPersister.getEditingTask().getDueDate().toString()%>"/></td>
+				<td><input type="date" name="dueDate" value="<%=toDoListPersister.getEditingTask().getDueDate().toString()%>"/></td>
 			</tr>
 		</table>
 		<input type="submit" value="Save" />

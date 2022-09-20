@@ -1,5 +1,6 @@
 <%@ page import="jalasoft.com.models.Task"%>
 <%@ page import="jalasoft.com.models.ToDoListPersister"%>
+<%@ page import="jalasoft.com.servlets.ListServlet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -79,7 +80,8 @@ input[type=button], input[type=submit], input[type=reset] {
 		</thead>
 		<tbody>
 			<%
-			for (Task task : ToDoListPersister.getTasks()) {
+			ToDoListPersister toDoListPersister = new ToDoListPersister();
+			for (Task task : toDoListPersister.getTasks()) {
 			%>
 			<tr>
 				<td><%=task.getTitle()%></td>
