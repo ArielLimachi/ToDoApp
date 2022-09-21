@@ -1,5 +1,7 @@
 package jalasoft.com.models;
 
+import java.util.List;
+
 public interface ISearch<T> {
-	T search(T object);
+	List<T> search(T object);
 }

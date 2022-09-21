@@ -13,6 +13,11 @@ public class Word {
 		this.taskId = taskId;
 	}
 
+	public Word(String word) {
+		this.word = word;
+		this.taskId = UUID.randomUUID();
+	}
+
 	public String getWord() {
 		return word;
 	}

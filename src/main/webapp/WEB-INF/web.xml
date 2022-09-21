@@ -43,5 +43,15 @@
 		<servlet-name>EditServlet</servlet-name>
 		<url-pattern>/edit</url-pattern>
 	</servlet-mapping>
+	
+	<display-name>SearchTask</display-name>
+	<servlet>
+		<servlet-name>SearchServlet</servlet-name>
+		<servlet-class>jalasoft.com.servlets.SearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchServlet</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
 
 </web-app>

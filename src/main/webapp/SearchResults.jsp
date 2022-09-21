@@ -60,13 +60,9 @@ input[type=button], input[type=submit], input[type=reset] {
 </head>
 <body>
 	<h1>ToDo App</h1>
-	<h2>List of to do's</h2>
+	<h2>Search a Task</h2>
 	<hr>
-
-	<form action="add" method="get">
-		<input type="submit" value="Add +" />
-	</form>
-
+	
 	<div>
 		<div>
 			<label>Search...</label>

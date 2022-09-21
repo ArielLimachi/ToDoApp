@@ -20,15 +20,20 @@ public class ToDoDictionary extends Dictionary<Word> {
 	}
 
 	@Override
-	public Word search(Word word) {
-		return null;
+	public List<Word> search(Word word) {
+		List<Word> resultWords = new ArrayList<>();
+		for (Word words : items) {
+			if (words.getWord().equals(word.getWord())) {
+				resultWords.add(words);
+			}
+		}
+		return resultWords;
 	}
 
 	@Override
 	public void setItems() {
 		items = new ArrayList<Word>();
 		for (Task task : tasks) {
-
 			addItems(dictionaryUtils.getWordsFromTask(task));
 		}
 	}
