@@ -1,6 +1,9 @@
+<%@page import="jalasoft.com.models.Word"%>
+<%@page import="java.util.List"%>
 <%@ page import="jalasoft.com.models.Task"%>
 <%@ page import="jalasoft.com.models.ToDoListPersister"%>
 <%@ page import="jalasoft.com.servlets.ListServlet"%>
+<%@ page import="jalasoft.com.models.ToDoDictionary"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -62,24 +65,38 @@ input[type=button], input[type=submit], input[type=reset] {
 	<h1>ToDo App</h1>
 	<h2>Search a Task</h2>
 	<hr>
-	
+
+	<%
+	ToDoDictionary dictionary = new ToDoDictionary();
+	%>
+
 	<div>
 		<div>
 			<label>Search...</label>
-			<form action="search" method=get>
-				<input type="submit" value="Search" />
-			</form>
+			<!-- 			<form action="search" method=get> -->
+			<!-- 				<input type="submit" value="Search" /> -->
+			<!-- 			</form> -->
 		</div>
-		<input type="text" id="wordList" list="words" />
-<!-- 		<datalist id="words"> -->
-<!-- 			<option value="backend"></option> -->
-<!-- 			<option value="frontend"></option> -->
-<!-- 			<option value="learn"></option> -->
-<!-- 			<option value="react"></option> -->
-<!-- 		</datalist> -->
+		<form action="search" method=get>
+			<input type="text" id="wordList" list="words" name="wordToSearch" />
+			<datalist id="words">
+				<option value="backend"></option>
+				<option value="frontend"></option>
+				<option value="learn"></option>
+				<option value="react"></option>
+			</datalist>
+			<input type="submit" value="Search" />
+		</form>
 	</div>
 
-	<p></p>
+
+
+	<h1><%=request.getAttribute("result")%></h1>
+	<h1>
+		<%
+		List<Word> resultSet = (List<Word>) request.getAttribute("resultSet");
+		%>
+	</h1>
 	<table style="width: 100%">
 		<thead>
 			<tr>
@@ -93,8 +110,8 @@ input[type=button], input[type=submit], input[type=reset] {
 		</thead>
 		<tbody>
 			<%
-			ToDoListPersister toDoListPersister = new ToDoListPersister();
-			for (Task task : toDoListPersister.getTasks()) {
+			for (Word word : resultSet) {
+				Task task = ToDoListPersister.getInstance().getTaskById(word.getTaskId());
 			%>
 			<tr>
 				<td><%=task.getTitle()%></td>

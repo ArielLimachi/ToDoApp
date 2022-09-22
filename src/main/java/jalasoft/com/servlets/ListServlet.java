@@ -16,13 +16,19 @@ import jalasoft.com.utils.TaskBuilder;
 public class ListServlet extends HttpServlet {	
 	
 	private static final long serialVersionUID = 1L;
-	ToDoListPersister toDoListPersister;
 	TaskBuilder taskBuilder;
 
 	public ListServlet() {
 		super();
-		toDoListPersister = new ToDoListPersister();
 		taskBuilder = new TaskBuilder();
+		ToDoListPersister.getInstance().addTask(new Task("Backend", "Learn React", Status.COMPLETE, new CustomDate(2022, 9, 20),
+				new CustomDate(2022, 9, 20)));
+
+		ToDoListPersister.getInstance().addTask(new Task("Backend", "Read about dessing patterns", Status.COMPLETE,
+				new CustomDate(2022, 9, 20), new CustomDate(2022, 9, 20)));
+
+		ToDoListPersister.getInstance().addTask(new Task("Fronted", "Code a basic calculator", Status.COMPLETE,
+				new CustomDate(2022, 9, 20), new CustomDate(2022, 9, 20)));
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +38,7 @@ public class ListServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		toDoListPersister.addTask(taskBuilder.build(request));
+		ToDoListPersister.getInstance().addTask(taskBuilder.build(request));
 		response.sendRedirect("ToDoList.jsp");
 	}
 }

@@ -5,8 +5,20 @@ import java.util.UUID;
 
 public class ToDoListPersister {
 
-	private static Page<Task> page = new Page<Task>(10);
-	private static Task editingTask;
+	private static ToDoListPersister INSTANCE;
+	private Page<Task> page = new Page<Task>(10);
+	private Task editingTask;
+	
+	private ToDoListPersister() {        
+    }
+    
+    public static ToDoListPersister getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new ToDoListPersister();
+        }
+        
+        return INSTANCE;
+    }
 
 	public void addTask(Task task) {
 		page.addItem(task);

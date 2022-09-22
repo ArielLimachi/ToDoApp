@@ -7,13 +7,11 @@ import jalasoft.com.utils.DictionaryUtils;
 
 public class ToDoDictionary extends Dictionary<Word> {
 
-	ToDoListPersister taskPersistence;
 	DictionaryUtils dictionaryUtils;
 	List<Task> tasks;
 
 	public ToDoDictionary() {
-		taskPersistence = new ToDoListPersister();
-		tasks = taskPersistence.getTasks();
+		tasks = ToDoListPersister.getInstance().getTasks();
 		dictionaryUtils = new DictionaryUtils();
 
 		setItems();

@@ -13,18 +13,16 @@ import jalasoft.com.utils.TaskBuilder;
 
 public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ToDoListPersister toDoListPersister;
 
 	public DeleteServlet() {
 		super();
-		toDoListPersister = new ToDoListPersister();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String id = request.getParameter("id");
-		toDoListPersister.removeTask(UUID.fromString(id));
+		ToDoListPersister.getInstance().removeTask(UUID.fromString(id));
 
 		response.sendRedirect("ToDoList.jsp");
 

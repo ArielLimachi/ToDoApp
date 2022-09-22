@@ -69,18 +69,10 @@ input[type=button], input[type=submit], input[type=reset] {
 
 	<div>
 		<div>
-			<label>Search...</label>
 			<form action="search" method=get>
 				<input type="submit" value="Search" />
 			</form>
 		</div>
-		<input type="text" id="wordList" list="words" />
-<!-- 		<datalist id="words"> -->
-<!-- 			<option value="backend"></option> -->
-<!-- 			<option value="frontend"></option> -->
-<!-- 			<option value="learn"></option> -->
-<!-- 			<option value="react"></option> -->
-<!-- 		</datalist> -->
 	</div>
 
 	<p></p>
@@ -97,8 +89,7 @@ input[type=button], input[type=submit], input[type=reset] {
 		</thead>
 		<tbody>
 			<%
-			ToDoListPersister toDoListPersister = new ToDoListPersister();
-			for (Task task : toDoListPersister.getTasks()) {
+			for (Task task : ToDoListPersister.getInstance().getTasks()) {
 			%>
 			<tr>
 				<td><%=task.getTitle()%></td>
