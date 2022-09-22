@@ -13,20 +13,20 @@ public class TaskBuilder {
 		String description = request.getParameter("description");
 		String statusAsString = request.getParameter("status");
 		Status status = Status.PENDING;
-		if(statusAsString.equals(""+Status.COMPLETE)) {
+		if (statusAsString.equals("" + Status.COMPLETE)) {
 			status = Status.COMPLETE;
-		}		
+		}
 		String initialDateAsString = request.getParameter("initialDate");
 		String dueDateAsString = request.getParameter("dueDate");
 
 		return new Task(title, description, status, buildDate(initialDateAsString), buildDate(dueDateAsString));
 	}
-	
+
 	public CustomDate buildDate(String dateAsString) {
 		String[] aux = dateAsString.split("-");
 		int year = Integer.parseInt(aux[0]);
 		int month = Integer.parseInt(aux[1]);
 		int day = Integer.parseInt(aux[2]);
 		return new CustomDate(year, month, day);
-	}	
+	}
 }

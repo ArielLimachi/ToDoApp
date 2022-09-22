@@ -13,7 +13,7 @@
 		<servlet-name>TaskServlet</servlet-name>
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
-	
+
 	<display-name>ListHandler</display-name>
 	<servlet>
 		<servlet-name>ListServlet</servlet-name>
@@ -23,7 +23,7 @@
 		<servlet-name>ListServlet</servlet-name>
 		<url-pattern>/add</url-pattern>
 	</servlet-mapping>
-	
+
 	<display-name>DeleteTask</display-name>
 	<servlet>
 		<servlet-name>DeleteServlet</servlet-name>
@@ -33,7 +33,7 @@
 		<servlet-name>DeleteServlet</servlet-name>
 		<url-pattern>/delete</url-pattern>
 	</servlet-mapping>
-	
+
 	<display-name>EditTask</display-name>
 	<servlet>
 		<servlet-name>EditServlet</servlet-name>
@@ -43,7 +43,7 @@
 		<servlet-name>EditServlet</servlet-name>
 		<url-pattern>/edit</url-pattern>
 	</servlet-mapping>
-	
+
 	<display-name>SearchTask</display-name>
 	<servlet>
 		<servlet-name>SearchServlet</servlet-name>

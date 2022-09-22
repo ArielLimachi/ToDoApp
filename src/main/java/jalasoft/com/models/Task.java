@@ -13,7 +13,7 @@ public class Task {
 	private CustomDate initialDate;
 	private CustomDate dueDate;
 
-	public Task() {		
+	public Task() {
 		id = UUID.randomUUID();
 		title = "To Do";
 		description = "No description";
