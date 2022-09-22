@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jalasoft.com.models.ToDoListPersister;
+import jalasoft.com.utils.Constants;
 import jalasoft.com.utils.TaskBuilder;
 
 public class EditServlet extends HttpServlet {
@@ -21,16 +22,18 @@ public class EditServlet extends HttpServlet {
 		taskBuilder = new TaskBuilder();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String id = request.getParameter("id");
+		String id = request.getParameter(Constants.ID_PARAMETER_NAME);
 		ToDoListPersister.getInstance().setEditingTask(UUID.fromString(id));
-		response.sendRedirect("EditTask.jsp");
+		response.sendRedirect(Constants.JSP_FILE_NAME_EDIT_TASK);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ToDoListPersister.getInstance().updateTask(taskBuilder.build(request));
-		response.sendRedirect("ToDoList.jsp");
+		response.sendRedirect(Constants.JSP_FILE_NAME_TO_DO_LIST);
 	}
 }

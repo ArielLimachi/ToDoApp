@@ -16,9 +16,9 @@ public class WordAutoComplete {
 	public List<String> autocomplete(ToDoDictionary dictionary, String wordAsString) {
 
 		purgeList();
-		for (Word dictionaryWord : dictionary.getItems()) {
-			if (dictionaryWord.getWord().contains(wordAsString)) {
-				possibleWords.add(dictionaryWord.getWord());
+		for (String dictionaryWord : dictionary.getItems()) {
+			if (dictionaryWord.contains(wordAsString)) {
+				possibleWords.add(dictionaryWord);
 			}
 		}
 

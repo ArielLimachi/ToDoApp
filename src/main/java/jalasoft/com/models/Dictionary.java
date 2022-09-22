@@ -1,10 +1,10 @@
 package jalasoft.com.models;
 
-import java.util.List;
+import java.util.Set;
 
 public abstract class Dictionary<T> implements ISearch<T> {
 
-	List<T> items;
+	Set<T> items;
 
 	public abstract void setItems();
 
@@ -12,7 +12,7 @@ public abstract class Dictionary<T> implements ISearch<T> {
 		items.add(item);
 	}
 
-	public void addItems(List<T> items) {
+	public void addItems(Set<T> items) {
 		this.items.addAll(items);
 	}
 
@@ -20,7 +20,7 @@ public abstract class Dictionary<T> implements ISearch<T> {
 		items.remove(item);
 	}
 
-	public List<T> getItems() {
+	public Set<T> getItems() {
 		return items;
 	}
 }

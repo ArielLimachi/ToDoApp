@@ -1,28 +1,27 @@
 package jalasoft.com.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import jalasoft.com.utils.Constants;
 import jalasoft.com.utils.DictionaryUtils;
 
-public class ToDoDictionary extends Dictionary<Word> {
+public class ToDoDictionary extends Dictionary<String> {
 
 	DictionaryUtils dictionaryUtils;
-	List<Task> tasks;
+	Set<String> words;
 
 	public ToDoDictionary() {
-		tasks = ToDoListPersister.getInstance().getTasks();
 		dictionaryUtils = new DictionaryUtils();
-
 		setItems();
 	}
 
 	@Override
-	public List<Word> search(Word word) {
-		List<Word> resultWords = new ArrayList<>();
-		for (Word words : items) {
-			if (words.getWord().equals(word.getWord())) {
-				resultWords.add(words);
+	public String search(String wordToSearch) {
+		String resultWords = Constants.EMPTY;
+		for (String word : items) {
+			if (word.equals(wordToSearch)) {
+				resultWords = wordToSearch;
 			}
 		}
 		return resultWords;
@@ -30,8 +29,8 @@ public class ToDoDictionary extends Dictionary<Word> {
 
 	@Override
 	public void setItems() {
-		items = new ArrayList<Word>();
-		for (Task task : tasks) {
+		items = new HashSet<String>();
+		for (Task task : ToDoListPersister.getInstance().getTasks()) {
 			addItems(dictionaryUtils.getWordsFromTask(task));
 		}
 	}

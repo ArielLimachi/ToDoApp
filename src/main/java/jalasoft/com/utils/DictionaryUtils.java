@@ -1,30 +1,25 @@
 package jalasoft.com.utils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jalasoft.com.models.Task;
-import jalasoft.com.models.Word;
 
 public class DictionaryUtils {
 
-	public List<Word> getWordsFromTask(Task task) {
-		List<Word> titleWords = phraseToList(task, task.getTitle());
-		List<Word> descriptionWords = phraseToList(task, task.getDescription());
-		List<Word> words = new ArrayList<>();
+	public Set<String> getWordsFromTask(Task task) {
+		Set<String> titleWords = phraseToList(task, task.getTitle());
+		Set<String> descriptionWords = phraseToList(task, task.getDescription());
+		Set<String> words = new HashSet<String>();
 		words.addAll(titleWords);
 		words.addAll(descriptionWords);
 		return words;
 	}
 
-	public List<Word> phraseToList(Task task, String phrase) {
-		List<String> wordsAsString = Arrays.asList(phrase.split(" "));
-		List<Word> words = new ArrayList<Word>();
-		for (String wordAsString : wordsAsString) {
-			words.add(new Word(wordAsString, task.getId()));
-		}
-		return words;
+	public Set<String> phraseToList(Task task, String phrase) {
+		Set<String> items = new HashSet<String>(Arrays.asList(phrase.split(Constants.SPACE)));
+		return items;
 	}
 
 }

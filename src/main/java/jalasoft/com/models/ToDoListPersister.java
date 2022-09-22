@@ -1,12 +1,16 @@
 package jalasoft.com.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import jalasoft.com.utils.Constants;
+import jalasoft.com.utils.DictionaryUtils;
 
 public class ToDoListPersister {
 
 	private static ToDoListPersister INSTANCE;
-	private Page<Task> page = new Page<Task>(10);
+	private Page<Task> page = new Page<Task>(Constants.ITEMS_PER_PAGE);
 	private Task editingTask;
 
 	private ToDoListPersister() {
@@ -61,5 +65,18 @@ public class ToDoListPersister {
 
 	public Task getEditingTask() {
 		return editingTask;
+	}
+
+	public List<Task> getTaskByWord(String wordToSearch) {
+		DictionaryUtils dictionaryUtils = new DictionaryUtils();
+		List<Task> resultTasks = new ArrayList<>();
+		for (Task task : getTasks()) {
+			for (String word : dictionaryUtils.getWordsFromTask(task)) {
+				if (wordToSearch.equals(word)) {
+					resultTasks.add(task);
+				}
+			}
+		}
+		return resultTasks;
 	}
 }

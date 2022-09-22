@@ -96,7 +96,7 @@ input[type=button], input[type=submit], input[type=reset] {
 		<%=request.getAttribute("result")%></h2>
 	<h1>
 		<%
-		List<Word> resultSet = (List<Word>) request.getAttribute("resultSet");
+		List<Task> resultSet = (List<Task>) request.getAttribute("resultSet");
 		%>
 	</h1>
 	<table style="width: 100%">
@@ -112,8 +112,7 @@ input[type=button], input[type=submit], input[type=reset] {
 		</thead>
 		<tbody>
 			<%
-			for (Word word : resultSet) {
-				Task task = ToDoListPersister.getInstance().getTaskById(word.getTaskId());
+			for (Task task : resultSet) {
 			%>
 			<tr>
 				<td><%=task.getTitle()%></td>
