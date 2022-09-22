@@ -15,7 +15,7 @@ public class CustomDate {
 		this.year = year;
 		this.month = month;
 		this.date = day;
-		isValid(this);
+		validate(this);
 	}
 
 	public int getYear() {
@@ -64,16 +64,13 @@ public class CustomDate {
 		return year + "-" + month + "-" + date;
 	}
 
-	public boolean isValid(CustomDate date) {
+	public void validate(CustomDate date) {
 		String pattern = "yyyy-MM-dd";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-		boolean isValid = false;
 		try {
-			Date auxiliarDate = simpleDateFormat.parse(date.toString());
-			isValid = true;
+			simpleDateFormat.parse(date.toString());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return isValid;
 	}
 }
