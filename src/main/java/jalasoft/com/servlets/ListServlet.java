@@ -17,7 +17,6 @@ public class ListServlet extends HttpServlet {
 
 	public ListServlet() {
 		super();
-		taskBuilder = new TaskBuilder();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -1,3 +1,4 @@
+<%@page import="jalasoft.com.models.WordAutoComplete"%>
 <%@page import="jalasoft.com.models.Word"%>
 <%@page import="java.util.List"%>
 <%@ page import="jalasoft.com.models.Task"%>
@@ -68,22 +69,21 @@ input[type=button], input[type=submit], input[type=reset] {
 
 	<%
 	ToDoDictionary dictionary = new ToDoDictionary();
+	WordAutoComplete completer = new WordAutoComplete();
+	List<String> autocomplete = (List<String>) request.getAttribute("autocomplete");
 	%>
 
 	<div>
-		<div>
-			<label>Search...</label>
-			<!-- 			<form action="search" method=get> -->
-			<!-- 				<input type="submit" value="Search" /> -->
-			<!-- 			</form> -->
-		</div>
-		<form action="search" method=get>
+		<form action="search" method=get oninput="search">
 			<input type="text" id="wordList" list="words" name="wordToSearch" />
 			<datalist id="words">
-				<option value="backend"></option>
-				<option value="frontend"></option>
-				<option value="learn"></option>
-				<option value="react"></option>
+				<%
+				for (String wordAsString : autocomplete) {
+				%>
+				<option value="<%=wordAsString%>"></option>
+				<%
+				}
+				%>
 			</datalist>
 			<input type="submit" value="Search" />
 		</form>
@@ -91,7 +91,9 @@ input[type=button], input[type=submit], input[type=reset] {
 
 
 
-	<h1><%=request.getAttribute("result")%></h1>
+	<h2>
+		These are the results for:
+		<%=request.getAttribute("result")%></h2>
 	<h1>
 		<%
 		List<Word> resultSet = (List<Word>) request.getAttribute("resultSet");
@@ -119,11 +121,6 @@ input[type=button], input[type=submit], input[type=reset] {
 				<td><%=task.getStatus()%></td>
 				<td><%=task.getInitialDate().toString()%></td>
 				<td><%=task.getDueDate().toString()%></td>
-				<!-- 				<td> -->
-				<!-- 					<form action="delete" method="post"> -->
-				<!-- 						<input type="submit" value="Delete" /> -->
-				<!-- 					</form> -->
-				<!-- 				</td> -->
 				<td><a
 					href="http://localhost:8080/TaskHandler/edit?id=<%=task.getId()%>">Edit</a>
 					/ <a

@@ -97,11 +97,6 @@ input[type=button], input[type=submit], input[type=reset] {
 				<td><%=task.getStatus()%></td>
 				<td><%=task.getInitialDate().toString()%></td>
 				<td><%=task.getDueDate().toString()%></td>
-				<!-- 				<td> -->
-				<!-- 					<form action="delete" method="post"> -->
-				<!-- 						<input type="submit" value="Delete" /> -->
-				<!-- 					</form> -->
-				<!-- 				</td> -->
 				<td><a
 					href="http://localhost:8080/TaskHandler/edit?id=<%=task.getId()%>">Edit</a>
 					/ <a

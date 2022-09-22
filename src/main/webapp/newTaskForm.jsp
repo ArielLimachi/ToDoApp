@@ -50,13 +50,13 @@ form {
 }
 
 input[type=button], input[type=submit], input[type=reset] {
-  background-color: #04AA6D;
-  border: none;
-  color: #000;
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
+	background-color: #04AA6D;
+	border: none;
+	color: #000;
+	padding: 16px 32px;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
 }
 </style>
 </head>
