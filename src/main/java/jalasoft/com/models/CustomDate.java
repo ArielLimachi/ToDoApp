@@ -1,21 +1,29 @@
 package jalasoft.com.models;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
+import jalasoft.com.utils.Constants;
 
 public class CustomDate {
 	private int year;
 	private int month;
 	private int date;
+	private Validator dateValidator;
 
 	public CustomDate(int year, int month, int day) {
 		super();
+		dateValidator = new DateValidator();
 		this.year = year;
 		this.month = month;
 		this.date = day;
-		validate(this);
+		dateValidator.validate(this);
+	}
+
+	public Validator getDateValidator() {
+		return dateValidator;
+	}
+
+	public void setDateValidator(Validator validator) {
+		this.dateValidator = validator;
 	}
 
 	public int getYear() {
@@ -61,16 +69,16 @@ public class CustomDate {
 
 	@Override
 	public String toString() {
-		return year + "-" + month + "-" + date;
+		return buildDateAsString();
 	}
 
-	public void validate(CustomDate date) {
-		String pattern = "yyyy-MM-dd";
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-		try {
-			simpleDateFormat.parse(date.toString());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+	public String buildDateAsString() {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append(year);
+		buffer.append(Constants.HYPHEN);
+		buffer.append(month);
+		buffer.append(Constants.HYPHEN);
+		buffer.append(date);
+		return buffer.toString();
 	}
 }

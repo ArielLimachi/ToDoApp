@@ -68,10 +68,9 @@ public class ToDoListPersister {
 	}
 
 	public List<Task> getTaskByWord(String wordToSearch) {
-		DictionaryUtils dictionaryUtils = new DictionaryUtils();
 		List<Task> resultTasks = new ArrayList<>();
 		for (Task task : getTasks()) {
-			for (String word : dictionaryUtils.getWordsFromTask(task)) {
+			for (String word : DictionaryUtils.getWordsFromTask(task)) {
 				if (wordToSearch.equals(word)) {
 					resultTasks.add(task);
 				}

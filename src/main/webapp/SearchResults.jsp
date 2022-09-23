@@ -1,5 +1,4 @@
 <%@page import="jalasoft.com.models.WordAutoComplete"%>
-<%@page import="jalasoft.com.models.Word"%>
 <%@page import="java.util.List"%>
 <%@ page import="jalasoft.com.models.Task"%>
 <%@ page import="jalasoft.com.models.ToDoListPersister"%>

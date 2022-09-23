@@ -8,7 +8,10 @@ import jalasoft.com.models.Task;
 
 public class DictionaryUtils {
 
-	public Set<String> getWordsFromTask(Task task) {
+	private DictionaryUtils() {
+	}
+
+	static public Set<String> getWordsFromTask(Task task) {
 		Set<String> titleWords = phraseToList(task, task.getTitle());
 		Set<String> descriptionWords = phraseToList(task, task.getDescription());
 		Set<String> words = new HashSet<String>();
@@ -17,7 +20,7 @@ public class DictionaryUtils {
 		return words;
 	}
 
-	public Set<String> phraseToList(Task task, String phrase) {
+	static Set<String> phraseToList(Task task, String phrase) {
 		Set<String> items = new HashSet<String>(Arrays.asList(phrase.split(Constants.SPACE)));
 		return items;
 	}

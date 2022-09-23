@@ -8,30 +8,23 @@ import jalasoft.com.utils.DictionaryUtils;
 
 public class ToDoDictionary extends Dictionary<String> {
 
-	DictionaryUtils dictionaryUtils;
 	Set<String> words;
 
 	public ToDoDictionary() {
-		dictionaryUtils = new DictionaryUtils();
 		setItems();
 	}
 
 	@Override
 	public String search(String wordToSearch) {
-		String resultWords = Constants.EMPTY;
-		for (String word : items) {
-			if (word.equals(wordToSearch)) {
-				resultWords = wordToSearch;
-			}
-		}
-		return resultWords;
+		return items.stream().allMatch(word -> word.equals(wordToSearch)) ? wordToSearch
+				: Constants.WORD_NOT_FOUND_IN_DICTIONARY;
 	}
 
 	@Override
 	public void setItems() {
 		items = new HashSet<String>();
 		for (Task task : ToDoListPersister.getInstance().getTasks()) {
-			addItems(dictionaryUtils.getWordsFromTask(task));
+			addItems(DictionaryUtils.getWordsFromTask(task));
 		}
 	}
 

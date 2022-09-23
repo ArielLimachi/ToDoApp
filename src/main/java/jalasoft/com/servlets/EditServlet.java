@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import jalasoft.com.models.ToDoListPersister;
 import jalasoft.com.utils.Constants;
-import jalasoft.com.utils.TaskBuilder;
+import jalasoft.com.utils.Utils;
 
 public class EditServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	TaskBuilder taskBuilder;
 
 	public EditServlet() {
 		super();
-		taskBuilder = new TaskBuilder();
 	}
 
 	@Override
@@ -33,7 +31,7 @@ public class EditServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ToDoListPersister.getInstance().updateTask(taskBuilder.build(request));
+		ToDoListPersister.getInstance().updateTask(Utils.buildTask(request));
 		response.sendRedirect(Constants.JSP_FILE_NAME_TO_DO_LIST);
 	}
 }
